@@ -23,11 +23,7 @@ services:
     staticPublishPath: dist
     envVars:
       - key: VITE_BACKEND_URL
-        # This will link the frontend to the backend URL automatically
-        fromService:
-          type: web
-          name: fuego-backend
-          envVarKey: RENDER_EXTERNAL_URL
+        value: https://fuego-uganda.onrender.com
     # Here is the rewrite rule for React Router to work correctly on reload!
     routes:
       - type: rewrite

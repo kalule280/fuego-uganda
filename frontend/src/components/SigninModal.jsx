@@ -19,14 +19,14 @@ const SigninModal = ({ isOpen, onClose, onLogin }) => {
                 body: JSON.stringify({ email, password }),
             });
 
-            const data = await response.json();
+            const data = await response.json().catch(() => ({}));
             if (response.ok) {
                 setMessage('Sign in successful!');
                 localStorage.setItem('user', JSON.stringify({ username: data.username }));
                 onLogin(data.username);
                 onClose();
             } else {
-                setMessage(data.error || 'Sign in failed.');
+                setMessage(data.error || `Sign in failed (${response.status}).`);
             }
         } catch (error) {
             console.error('Error during sign in:', error);

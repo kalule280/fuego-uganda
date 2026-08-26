@@ -21,14 +21,14 @@ const SignupModal = ({ isOpen, onClose, onLogin }) => {
                 body: JSON.stringify({ username, email, password }),
             });
 
-            const data = await response.json();
+            const data = await response.json().catch(() => ({}));
             if (response.ok) {
                 setMessage('Registration successful!');
                 localStorage.setItem('user', JSON.stringify({ username }));
                 if (onLogin) onLogin(username);
                 onClose();
             } else {
-                setMessage(data.error || 'Registration failed.');
+                setMessage(data.error || `Registration failed (${response.status}).`);
             }
         } catch (err) {
             console.error('Error during registration:', err);
