@@ -9,6 +9,7 @@ const Navbar = () => {
   const [isSignupOpen, setIsSignupOpen] = useState(false);
   const [isSigninOpen, setIsSigninOpen] = useState(false);
   const [user, setUser] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -84,11 +85,27 @@ const Navbar = () => {
             </>
           )}
 
-          <button className="lg:hidden text-white p-2">
+          <button
+            type="button"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            className="relative z-50 p-2 text-white lg:hidden"
+          >
             <span className="material-symbols-outlined">menu</span>
           </button>
         </div>
       </div>
+      {menuOpen && (
+        <div className="border-t border-white/10 bg-[#071b46] px-margin-mobile pb-5 pt-3 lg:hidden">
+          <div className="flex flex-col gap-1">
+            <NavLink to="/" end onClick={() => setMenuOpen(false)} className={getNavClass}>Home</NavLink>
+            <NavLink to="/categories" onClick={() => setMenuOpen(false)} className={getNavClass}>Products</NavLink>
+            <NavLink to="/about" onClick={() => setMenuOpen(false)} className={getNavClass}>About</NavLink>
+            <NavLink to="/support" onClick={() => setMenuOpen(false)} className={getNavClass}>Contact</NavLink>
+          </div>
+        </div>
+      )}
       <SignupModal isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} onLogin={handleLogin} />
       <SigninModal isOpen={isSigninOpen} onClose={() => setIsSigninOpen(false)} onLogin={handleLogin} />
     </nav>
