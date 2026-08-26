@@ -50,7 +50,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#071b46] shadow-[0_8px_24px_rgba(7,27,70,0.10)] transition-all duration-300">
+    <header className="sticky left-0 top-0 z-50 w-full border-b border-white/10 bg-[#071b46] shadow-md transition-all duration-300">
       <div className="mx-auto flex h-[78px] max-w-7xl items-center justify-between px-margin-mobile md:px-margin-desktop">
         {/* Brand */}
         <Link to="/" className="flex items-center gap-2 text-2xl font-bold tracking-tight text-white">
@@ -108,7 +108,7 @@ const Navbar = () => {
       )}
       <SignupModal isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} onLogin={handleLogin} />
       <SigninModal isOpen={isSigninOpen} onClose={() => setIsSigninOpen(false)} onLogin={handleLogin} />
-    </nav>
+    </header>
   );
 };
 
