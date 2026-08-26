@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const API_BASE_URL = (import.meta.env.VITE_BACKEND_URL || '').replace(/\/$/, '');
+
 const SignupModal = ({ isOpen, onClose, onLogin }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -11,7 +13,7 @@ const SignupModal = ({ isOpen, onClose, onLogin }) => {
         const username = email.split('@')[0];
 
         try {
-            const response = await fetch(`http://localhost:5000/api/register`, {
+            const response = await fetch(`${API_BASE_URL}/api/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
