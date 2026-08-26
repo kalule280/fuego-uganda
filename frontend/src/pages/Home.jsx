@@ -95,7 +95,7 @@ const Home = () => {
             <div className="mt-3 text-lg font-semibold text-[#2d3748]">Fuel Savings</div>
           </div>
           <div className="rounded-xl border border-[#dfe6ee] bg-white p-6 shadow-sm">
-            <div className="text-[clamp(2.5rem,4vw,4rem)] font-black tracking-[-0.05em] text-[#0f172a]">45%</div>
+            <div className="text-[clamp(2.5rem,4vw,4rem)] font-black tracking-[-0.05em] text-[#0f172a]">80%</div>
             <div className="mt-3 text-lg font-semibold text-[#2d3748]">Target Efficiency Goal</div>
           </div>
           <div className="rounded-xl border border-[#dfe6ee] bg-white p-6 shadow-sm">

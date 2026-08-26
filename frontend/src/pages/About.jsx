@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import aboutUsImage from '../images/about us.png';
+import missionImage from '../images/our mission.jpg';
+import efficiencyImage from '../images/our efficiency.jpg';
+import ceoImage from '../images/Chief Executive Officer.jpg';
 
 const About = () => {
   return (
@@ -30,10 +33,15 @@ const About = () => {
       <section className="py-section-gap px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter">
           {/* Mission Statement */}
-          <div className="md:col-span-8 bg-surface-container-lowest border border-surface-variant rounded-xl p-8 md:p-12 ambient-shadow">
-            <span className="material-symbols-outlined text-primary text-4xl mb-4">bolt</span>
-            <h2 className="text-headline-lg font-headline-lg text-on-surface mb-4">Our Mission</h2>
-            <p className="text-body-md font-body-md text-on-surface-variant max-w-2xl">To provide accessible, highly efficient, and environmentally responsible energy solutions to households and institutions across Uganda and beyond. We believe that robust engineering can solve critical energy challenges.</p>
+          <div className="md:col-span-8 bg-surface-container-lowest border border-surface-variant rounded-xl overflow-hidden ambient-shadow flex flex-col md:flex-row">
+            <div className="p-8 md:p-12 md:w-[55%]">
+              <span className="material-symbols-outlined text-primary text-4xl mb-4">bolt</span>
+              <h2 className="text-headline-lg font-headline-lg text-on-surface mb-4">Our Mission</h2>
+              <p className="text-body-md font-body-md text-on-surface-variant">To provide accessible, highly efficient, and environmentally responsible energy solutions to households and institutions across Uganda and beyond. We believe that robust engineering can solve critical energy challenges.</p>
+            </div>
+            <div className="md:w-[45%] h-64 md:h-auto bg-surface-variant">
+              <img src={missionImage} alt="Our Mission" className="w-full h-full object-cover" />
+            </div>
           </div>
           {/* Core Value 1 */}
           <div className="md:col-span-4 bg-surface-container-low rounded-xl p-8 flex flex-col justify-center items-start border border-transparent hover:border-surface-variant transition-all">
@@ -42,10 +50,15 @@ const About = () => {
             <p className="text-body-md font-body-md text-on-surface-variant">Uncompromising quality in every product we manufacture.</p>
           </div>
           {/* Core Value 2 */}
-          <div className="md:col-span-6 bg-surface-container-low rounded-xl p-8 flex flex-col justify-center items-start border border-transparent hover:border-surface-variant transition-all">
-            <span className="material-symbols-outlined text-secondary text-3xl mb-4">speed</span>
-            <h3 className="text-headline-md font-headline-md text-on-surface mb-2">Efficiency</h3>
-            <p className="text-body-md font-body-md text-on-surface-variant">Maximizing thermal output while minimizing fuel consumption through advanced thermodynamics.</p>
+          <div className="md:col-span-6 bg-surface-container-low rounded-xl overflow-hidden flex flex-col border border-transparent hover:border-surface-variant transition-all">
+            <div className="h-48 w-full bg-surface-variant">
+              <img src={efficiencyImage} alt="Efficiency" className="w-full h-full object-cover" />
+            </div>
+            <div className="p-8 flex flex-col justify-center items-start">
+              <span className="material-symbols-outlined text-secondary text-3xl mb-4">speed</span>
+              <h3 className="text-headline-md font-headline-md text-on-surface mb-2">Efficiency</h3>
+              <p className="text-body-md font-body-md text-on-surface-variant">Maximizing thermal output while minimizing fuel consumption through advanced thermodynamics.</p>
+            </div>
           </div>
           {/* Core Value 3 */}
           <div className="md:col-span-6 bg-surface-container-low rounded-xl p-8 flex flex-col justify-center items-start border border-transparent hover:border-surface-variant transition-all">
@@ -110,7 +123,7 @@ const About = () => {
           {/* Team Member 1 */}
           <div className="group cursor-pointer">
             <div className="aspect-[4/5] rounded-xl overflow-hidden mb-4 bg-surface-variant relative">
-              <img alt="David Ochieng" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs3WZ_Bnzu7tU3HjnSFfKMMS-kcYFmQ3sklEgJQEvFxV9AjsR4KECum6nR6a6SB8TAVYkUda-bn5ftEO5FUhajKONhoCesS4RHFH4tqatR6RGDulrjL6GP9SG_K8skBVtodAbWSOhnuAxlEcnfi9doc5spATnvldmYVykF_W2HDP4Yb2whS-z08BJ9loVfOD10DgBcZrTGdJlhTY2rikeMgcKaLbnUApGANUECb4Dvnt4FokW5Aynx" />
+              <img alt="David Ochieng" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={ceoImage} />
             </div>
             <h4 className="text-headline-md font-headline-md text-on-surface">David Ochieng</h4>
             <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Chief Executive Officer</p>
