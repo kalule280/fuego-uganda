@@ -9,7 +9,7 @@ const SigninModal = ({ isOpen, onClose, onLogin }) => {
         e.preventDefault();
         setMessage('Signing in...');
         try {
-            const response = await fetch('https://fuego-uganda.onrender.com/api/login', {
+            const response = await fetch(`http://localhost:5000/api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -21,10 +21,8 @@ const SigninModal = ({ isOpen, onClose, onLogin }) => {
             if (response.ok) {
                 setMessage('Sign in successful!');
                 localStorage.setItem('user', JSON.stringify({ username: data.username }));
-                setTimeout(() => {
-                    onLogin(data.username);
-                    onClose();
-                }, 1000);
+                onLogin(data.username);
+                onClose();
             } else {
                 setMessage(data.error || 'Sign in failed.');
             }

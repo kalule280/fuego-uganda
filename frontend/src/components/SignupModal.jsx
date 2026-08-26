@@ -9,8 +9,9 @@ const SignupModal = ({ isOpen, onClose, onLogin }) => {
         e.preventDefault();
         setMessage('Submitting...');
         const username = email.split('@')[0];
+
         try {
-            const response = await fetch('https://fuego-uganda.onrender.com/api/register', {
+            const response = await fetch(`http://localhost:5000/api/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -20,17 +21,15 @@ const SignupModal = ({ isOpen, onClose, onLogin }) => {
 
             const data = await response.json();
             if (response.ok) {
-                setMessage(data.message || 'Registration successful!');
+                setMessage('Registration successful!');
                 localStorage.setItem('user', JSON.stringify({ username }));
-                setTimeout(() => {
-                    if (onLogin) onLogin(username);
-                    onClose();
-                }, 1000);
+                if (onLogin) onLogin(username);
+                onClose();
             } else {
                 setMessage(data.error || 'Registration failed.');
             }
-        } catch (error) {
-            console.error('Error during registration:', error);
+        } catch (err) {
+            console.error('Error during registration:', err);
             setMessage('An error occurred. Please try again.');
         }
     };
