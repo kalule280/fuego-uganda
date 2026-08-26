@@ -5,7 +5,6 @@ import missionImage from '../images/our mission.jpg';
 import efficiencyImage from '../images/our efficiency.jpg';
 import ceoImage from '../images/Chief Executive Officer.jpg';
 import managerImage from '../images/Manager fuego uganda.jpg';
-import localImage1 from '../images/local.png';
 import localImpactImage from '../images/local impact.jpg';
 import integrityImage from '../images/integrity.jpg';
 
@@ -150,24 +149,6 @@ const About = () => {
             </div>
             <h4 className="text-headline-md font-headline-md text-on-surface">Natubwe Shana</h4>
             <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Manager Fuego Uganda</p>
-          </div>
-        </div>
-      </section>
-
-      {/* Community Impact Gallery */}
-      <section className="py-section-gap bg-surface-container px-margin-mobile md:px-margin-desktop">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-headline-lg font-headline-lg text-on-surface mb-4">Our Local Impact</h2>
-            <p className="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">Working closely with communities in Uganda.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-            <div className="rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(7,27,70,0.1)] aspect-video bg-surface-variant">
-              <img src={localImage1} alt="Local Impact 1" className="w-full h-full object-cover" />
-            </div>
-            <div className="rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(7,27,70,0.1)] aspect-video bg-surface-variant">
-              <img src={localImpactImage} alt="Local Impact 2" className="w-full h-full object-cover" />
-            </div>
           </div>
         </div>
       </section>
