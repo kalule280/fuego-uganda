@@ -41,7 +41,7 @@ const Home = () => {
               </div>
 
               <div className="mt-6 flex flex-wrap items-center gap-4 text-white">
-                <span className="text-base font-semibold md:text-lg">65% Reduction in Fuel Usage</span>
+                <span className="text-base font-semibold md:text-lg">85% Reduction in Fuel Usage</span>
                 <span className="text-base opacity-80 md:text-lg">(45% Target)</span>
                 <span className="text-base font-semibold text-[#f9c784] md:text-lg">78% Efficiency</span>
               </div>
@@ -91,7 +91,7 @@ const Home = () => {
         
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           <div className="rounded-xl border border-[#dfe6ee] bg-white p-6 shadow-sm">
-            <div className="text-[clamp(2.5rem,4vw,4rem)] font-black tracking-[-0.05em] text-[#0f172a]">65%</div>
+            <div className="text-[clamp(2.5rem,4vw,4rem)] font-black tracking-[-0.05em] text-[#0f172a]">85%</div>
             <div className="mt-3 text-lg font-semibold text-[#2d3748]">Fuel Savings</div>
           </div>
           <div className="rounded-xl border border-[#dfe6ee] bg-white p-6 shadow-sm">

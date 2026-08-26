@@ -89,7 +89,7 @@ const Support = () => {
                     </div>
                     <div className="flex items-center gap-2 text-secondary font-medium">
                       <span className="material-symbols-outlined text-sm">call</span>
-                      <a className="font-body-md text-sm hover:underline" href="tel:+2567888376721">07888376721</a>
+                      <a className="font-body-md text-sm hover:underline" href="tel:+256707635706">0707635706</a>
                     </div>
                     <div className="flex items-center gap-2 text-secondary font-medium">
                       <span className="material-symbols-outlined text-sm">mail</span>
@@ -97,7 +97,7 @@ const Support = () => {
                     </div>
                     <div className="flex items-center gap-2 text-success-eco font-medium">
                       <span className="material-symbols-outlined text-sm">chat</span>
-                      <a className="font-body-md text-sm hover:underline" href="https://wa.me/256707635706" target="_blank" rel="noreferrer">WhatsApp: 0707635706</a>
+                      <a className="font-body-md text-sm hover:underline" href="https://wa.me/2567888376721" target="_blank" rel="noreferrer">WhatsApp: 07888376721</a>
                     </div>
                     <div className="flex items-center gap-2 text-on-surface font-medium">
                       <span className="material-symbols-outlined text-sm">share</span>

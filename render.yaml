@@ -1,0 +1,35 @@
+services:
+  # Backend Web Service
+  - type: web
+    name: fuego-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false # You will need to add this manually in the Render dashboard
+
+  # Frontend Static Site
+  - type: web
+    name: fuego-frontend
+    env: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_BACKEND_URL
+        # This will link the frontend to the backend URL automatically
+        fromService:
+          type: web
+          name: fuego-backend
+          envVarKey: RENDER_EXTERNAL_URL
+    # Here is the rewrite rule for React Router to work correctly on reload!
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

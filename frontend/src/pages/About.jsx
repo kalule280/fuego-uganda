@@ -4,6 +4,10 @@ import aboutUsImage from '../images/about us.png';
 import missionImage from '../images/our mission.jpg';
 import efficiencyImage from '../images/our efficiency.jpg';
 import ceoImage from '../images/Chief Executive Officer.jpg';
+import managerImage from '../images/Manager fuego uganda.jpg';
+import localImage1 from '../images/local.png';
+import localImpactImage from '../images/local impact.jpg';
+import integrityImage from '../images/integrity.jpg';
 
 const About = () => {
   return (
@@ -44,10 +48,15 @@ const About = () => {
             </div>
           </div>
           {/* Core Value 1 */}
-          <div className="md:col-span-4 bg-surface-container-low rounded-xl p-8 flex flex-col justify-center items-start border border-transparent hover:border-surface-variant transition-all">
-            <span className="material-symbols-outlined text-secondary text-3xl mb-4">verified_user</span>
-            <h3 className="text-headline-md font-headline-md text-on-surface mb-2">Integrity</h3>
-            <p className="text-body-md font-body-md text-on-surface-variant">Uncompromising quality in every product we manufacture.</p>
+          <div className="md:col-span-4 bg-surface-container-low rounded-xl overflow-hidden flex flex-col border border-transparent hover:border-surface-variant transition-all">
+            <div className="h-48 w-full bg-surface-variant">
+              <img src={integrityImage} alt="Integrity" className="w-full h-full object-cover" />
+            </div>
+            <div className="p-8 flex flex-col justify-center items-start">
+              <span className="material-symbols-outlined text-secondary text-3xl mb-4">verified_user</span>
+              <h3 className="text-headline-md font-headline-md text-on-surface mb-2">Integrity</h3>
+              <p className="text-body-md font-body-md text-on-surface-variant">Uncompromising quality in every product we manufacture.</p>
+            </div>
           </div>
           {/* Core Value 2 */}
           <div className="md:col-span-6 bg-surface-container-low rounded-xl overflow-hidden flex flex-col border border-transparent hover:border-surface-variant transition-all">
@@ -61,10 +70,15 @@ const About = () => {
             </div>
           </div>
           {/* Core Value 3 */}
-          <div className="md:col-span-6 bg-surface-container-low rounded-xl p-8 flex flex-col justify-center items-start border border-transparent hover:border-surface-variant transition-all">
-            <span className="material-symbols-outlined text-secondary text-3xl mb-4">public</span>
-            <h3 className="text-headline-md font-headline-md text-on-surface mb-2">Local Impact</h3>
-            <p className="text-body-md font-body-md text-on-surface-variant">Empowering local communities by creating jobs and reducing environmental degradation.</p>
+          <div className="md:col-span-6 bg-surface-container-low rounded-xl overflow-hidden flex flex-col border border-transparent hover:border-surface-variant transition-all">
+            <div className="h-48 w-full bg-surface-variant">
+              <img src={localImpactImage} alt="Local Impact" className="w-full h-full object-cover" />
+            </div>
+            <div className="p-8 flex flex-col justify-center items-start">
+              <span className="material-symbols-outlined text-secondary text-3xl mb-4">public</span>
+              <h3 className="text-headline-md font-headline-md text-on-surface mb-2">Local Impact</h3>
+              <p className="text-body-md font-body-md text-on-surface-variant">Empowering local communities by creating jobs and reducing environmental degradation.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -119,32 +133,41 @@ const About = () => {
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-gutter">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-gutter max-w-4xl mx-auto">
           {/* Team Member 1 */}
-          <div className="group cursor-pointer">
-            <div className="aspect-[4/5] rounded-xl overflow-hidden mb-4 bg-surface-variant relative">
-              <img alt="David Ochieng" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={ceoImage} />
+          <div className="group cursor-pointer text-center">
+            <div className="aspect-[4/5] rounded-xl overflow-hidden mb-4 bg-surface-variant relative max-w-sm mx-auto">
+              <img alt="Baker Lutabi" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={ceoImage} />
             </div>
-            <h4 className="text-headline-md font-headline-md text-on-surface">David Ochieng</h4>
-            <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Chief Executive Officer</p>
+            <h4 className="text-headline-md font-headline-md text-on-surface">Baker Lutabi</h4>
+            <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Chief Executive Officer Fuego Uganda</p>
           </div>
           
           {/* Team Member 2 */}
-          <div className="group cursor-pointer">
-            <div className="aspect-[4/5] rounded-xl overflow-hidden mb-4 bg-surface-variant relative">
-              <img alt="Sarah Nakintu" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOOzLu8fRwTGAVcOJEiY66FB2mlZvMpR2k5i4Scr0pioDe48fFccCdVXHIm0OFIMKBczQvcUAKJEwsWDJV1WFNA2a3cgL4UOzy-Defy-uQslzazN3gckFWVLVrTMr2GBXUk-qzc4_ES-el4ntD1866qOanKIXbIY9jZ6wzgV0T7YLQ_v0Hv4vnwELrBf2uUKgM3FMdfAA_K-wmZ0GJ-p8KjH2jhyReDp3F_xlSPhh_fOlAPyaYDmHx" />
+          <div className="group cursor-pointer text-center">
+            <div className="aspect-[4/5] rounded-xl overflow-hidden mb-4 bg-surface-variant relative max-w-sm mx-auto">
+              <img alt="Natubwe Shana" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={managerImage} />
             </div>
-            <h4 className="text-headline-md font-headline-md text-on-surface">Sarah Nakintu</h4>
-            <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Chief Engineer</p>
+            <h4 className="text-headline-md font-headline-md text-on-surface">Natubwe Shana</h4>
+            <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Manager Fuego Uganda</p>
           </div>
-          
-          {/* Team Member 3 */}
-          <div className="group cursor-pointer">
-            <div className="aspect-[4/5] rounded-xl overflow-hidden mb-4 bg-surface-variant relative">
-              <img alt="Michael Kizza" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUpW3wfnB_UokCT8fBGjYg62jVSZsgTFDLVQ8DTJmHrn1aWLznxAszZvSDnVJ0uATbQxm2cq5_N40paxmL6mDF0Yadhoh0KZhPHC_mO4eHnAyK9V6MHPXPmClbUbGKjkmiujkmbudQxwWosaZVT3dDgxliCr3zMqzvlJE3eKKcLtWQ7CEexi7VBQlQxlKIQhuZcxkHNHg0sYjPidaC7T85BztJSIU1RXrAxoi8ogOiSiJEIp-nwZr7" />
+        </div>
+      </section>
+
+      {/* Community Impact Gallery */}
+      <section className="py-section-gap bg-surface-container px-margin-mobile md:px-margin-desktop">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-headline-lg font-headline-lg text-on-surface mb-4">Our Local Impact</h2>
+            <p className="text-body-lg font-body-lg text-on-surface-variant max-w-2xl mx-auto">Working closely with communities in Uganda.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+            <div className="rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(7,27,70,0.1)] aspect-video bg-surface-variant">
+              <img src={localImage1} alt="Local Impact 1" className="w-full h-full object-cover" />
             </div>
-            <h4 className="text-headline-md font-headline-md text-on-surface">Michael Kizza</h4>
-            <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Director of Operations</p>
+            <div className="rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(7,27,70,0.1)] aspect-video bg-surface-variant">
+              <img src={localImpactImage} alt="Local Impact 2" className="w-full h-full object-cover" />
+            </div>
           </div>
         </div>
       </section>

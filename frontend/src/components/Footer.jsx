@@ -19,8 +19,8 @@ const Footer = () => {
           
           <div className="flex flex-col gap-2">
             <span className="text-white font-bold text-label-md font-label-md mb-2">Contact Us</span>
-            <a href="tel:+2567888376721" className="text-[#dfe8ff]/80 hover:text-white hover:underline transition-all text-body-md font-body-md flex items-center gap-2">
-              <span className="material-symbols-outlined text-sm">call</span> 07888376721
+            <a href="tel:+256707635706" className="text-[#dfe8ff]/80 hover:text-white hover:underline transition-all text-body-md font-body-md flex items-center gap-2">
+              <span className="material-symbols-outlined text-sm">call</span> 0707635706
             </a>
             <a href="mailto:Fuegouganda@gmail.com" className="text-[#dfe8ff]/80 hover:text-white hover:underline transition-all text-body-md font-body-md flex items-center gap-2">
               <span className="material-symbols-outlined text-sm">mail</span> Fuegouganda@gmail.com
