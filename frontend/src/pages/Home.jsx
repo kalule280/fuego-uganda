@@ -5,6 +5,51 @@ import miniStoveImage from '../images/ministove.jpg';
 import doubleStoveImage from '../images/double stove (2).jpg';
 import solarAidedImage from '../images/solar aided.jpg';
 
+import solar1 from '../images/image/fuego solar.jpg';
+import solar2 from '../images/image/fuego solar2.jpg';
+import solar3 from '../images/image/fuego Solar 3.jpg';
+import solar4 from '../images/image/fuego solar4.jpg';
+import hybrid1 from '../images/image/highbrid solar.jpg';
+import hybrid2 from '../images/image/highbrid solar2.jpg';
+import hybrid3 from '../images/image/highbrid solar3.jpg';
+import hybrid4 from '../images/image/highbrid silar4.jpg';
+import installed1 from '../images/image/fuego installed solar.jpg';
+import installed2 from '../images/image/our installed house.jpg';
+
+import light1 from '../images/image/fuego lights.jpg';
+import light2 from '../images/image/fuegolight2.jpg';
+import installed3 from '../images/image/our team installing the solar lights.jpg';
+
+import stove1 from '../images/image/fuego stoves ekyoto.jpg';
+import stove2 from '../images/image/fuegostoves small19.jpg';
+import stove3 from '../images/image/more of small fuego stoves 18.jpg';
+import stove4 from '../images/image/fuego16.jpg';
+
+const AutoSlider = ({ images, altText }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (!images || images.length <= 1) return;
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, [images]);
+
+  return (
+    <div className="relative w-full h-full bg-gray-200">
+      {images.map((imgSrc, idx) => (
+        <img 
+          key={idx}
+          src={imgSrc}
+          alt={`${altText} ${idx + 1}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'} hover:scale-105`}
+        />
+      ))}
+    </div>
+  );
+};
+
 const Home = () => {
   const [user, setUser] = useState(() => {
     const stored = localStorage.getItem('user');
@@ -19,6 +64,30 @@ const Home = () => {
     window.addEventListener('userChanged', handleUserChange);
     return () => window.removeEventListener('userChanged', handleUserChange);
   }, []);
+
+  const productsAndServices = [
+    {
+      id: "solar",
+      title: "Solar & Hybrid Systems",
+      description: "Reliable solar panels and hybrid setups tailored for home and business energy independence, complete with expert installation.",
+      images: [solar1, solar2, solar3, solar4, hybrid1, hybrid2, hybrid3, hybrid4, installed1, installed2],
+      alt: "Solar and Hybrid Systems"
+    },
+    {
+      id: "lights",
+      title: "Solar Lighting Solutions",
+      description: "High-efficiency indoor and outdoor solar lights designed for bright, cost-effective illumination and professional setup.",
+      images: [light1, light2, installed3],
+      alt: "Solar Lights"
+    },
+    {
+      id: "stoves",
+      title: "Clean Cookstoves",
+      description: "Durable, eco-friendly cookstoves engineered to reduce fuel consumption, smoke, and household cooking costs.",
+      images: [stove1, stove2, stove3],
+      alt: "Cookstoves"
+    }
+  ];
 
   return (
     <main>
@@ -69,16 +138,57 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Trust Bar */}
-      <section className="w-full bg-surface py-12 border-b border-surface-variant">
-        <div className="px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
-          <p className="text-center text-label-md font-label-md text-secondary mb-8 uppercase tracking-widest">Trusted by Enterprise Partners</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale">
-            <div className="flex items-center gap-2 font-headline-md text-headline-md text-secondary"><span className="material-symbols-outlined text-[32px]">apartment</span> EcoCorp</div>
-            <div className="flex items-center gap-2 font-headline-md text-headline-md text-secondary"><span className="material-symbols-outlined text-[32px]">factory</span> GlobalTech</div>
-            <div className="flex items-center gap-2 font-headline-md text-headline-md text-secondary"><span className="material-symbols-outlined text-[32px]">energy_savings_leaf</span> GreenInitiative</div>
-            <div className="flex items-center gap-2 font-headline-md text-headline-md text-secondary"><span className="material-symbols-outlined text-[32px]">verified</span> QualityAssurance</div>
+      {/* Products and Services Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <span className="text-orange-600 font-semibold tracking-wider uppercase text-sm">
+              What We Offer
+            </span>
+            <h2 className="text-3xl font-bold text-gray-900 mt-2">
+              Our Products & Services
+            </h2>
+            <p className="text-gray-600 mt-2 max-w-2xl mx-auto">
+              Powering homes and businesses across Uganda with sustainable energy products and professional installation services.
+            </p>
           </div>
+
+          {/* 3-Column Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {productsAndServices.map((item, index) => (
+              <div 
+                key={index} 
+                className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col border border-gray-100"
+              >
+                {/* Product Image Container */}
+                <div className="h-52 w-full overflow-hidden bg-gray-200">
+                  <AutoSlider images={item.images} altText={item.alt} />
+                </div>
+
+                {/* Card Content */}
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      {item.description}
+                    </p>
+                  </div>
+
+                  <Link 
+                    to={`/gallery?category=${item.id}`}
+                    className="text-orange-600 hover:text-orange-700 font-medium text-sm inline-flex items-center gap-1 mt-auto"
+                  >
+                    Learn more &rarr;
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
 

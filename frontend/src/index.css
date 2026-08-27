@@ -4,6 +4,11 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 @layer base {
   .material-symbols-outlined {
     font-family: 'Material Symbols Outlined';

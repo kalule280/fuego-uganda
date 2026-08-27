@@ -6,6 +6,7 @@ import Categories from './pages/Categories';
 import About from './pages/About';
 import Support from './pages/Support';
 import ManagementPortal from './pages/ManagementPortal';
+import Gallery from './pages/Gallery';
 
 // Scroll to top on every route change
 function ScrollToTop() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="support" element={<Support />} />
           <Route path="portal" element={<ManagementPortal />} />
+          <Route path="gallery" element={<Gallery />} />
         </Route>
       </Routes>
     </Router>
