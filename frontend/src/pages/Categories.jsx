@@ -62,10 +62,6 @@ const allProducts = [
 
 const categoryList = ["Solar aided stoves", "Ekyoto (Charcoal)", "Firewood stoves", "Charcoal stoves", "Mini stoves", "Double stoves", "Grills", "Solar lighting"];
 const fuelTypeList = ["Wood", "Charcoal", "Briquettes", "Solar"];
-const MAX_PRICE = 10000000;
-
-// Format price as UGX with commas
-const formatPrice = (price) => `UGX ${price.toLocaleString()}`;
 
 const Categories = () => {
   // Pre-select these categories by default so their products show first
@@ -76,7 +72,6 @@ const Categories = () => {
     "Double stoves"
   ]);
   const [selectedFuelTypes, setSelectedFuelTypes] = useState([]);
-  const [maxPrice, setMaxPrice] = useState(MAX_PRICE);
   const [sortBy, setSortBy] = useState('default');
 
   // Toggle a value in/out of an array
@@ -91,17 +86,16 @@ const Categories = () => {
   // Filter logic:
   // If categories are selected, show only those. If none are selected, show none (or could show all).
   let filteredProducts = allProducts.filter(product => {
-    const matchesPrice = product.price <= maxPrice;
     const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
     const matchesFuel = selectedFuelTypes.length === 0 || selectedFuelTypes.includes(product.fuelType);
-    return matchesCategory && matchesFuel && matchesPrice;
+    return matchesCategory && matchesFuel;
   });
 
   // Apply sorting
-  if (sortBy === 'price-low') {
-    filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
-  } else if (sortBy === 'price-high') {
-    filteredProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
+  if (sortBy === 'name-az') {
+    filteredProducts = [...filteredProducts].sort((a, b) => a.name.localeCompare(b.name));
+  } else if (sortBy === 'name-za') {
+    filteredProducts = [...filteredProducts].sort((a, b) => b.name.localeCompare(a.name));
   }
 
   return (
@@ -145,22 +139,7 @@ const Categories = () => {
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="text-headline-md font-headline-md mb-4 text-on-background">Price Range</h3>
-            <input
-              className="w-full accent-primary"
-              max={MAX_PRICE}
-              min={0}
-              step={50000}
-              type="range"
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(Number(e.target.value))}
-            />
-            <div className="flex justify-between text-body-md font-body-md text-secondary mt-2">
-              <span>UGX 0</span>
-              <span>{formatPrice(maxPrice)}</span>
-            </div>
-          </div>
+
         </aside>
 
         {/* Product Grid */}
@@ -179,8 +158,8 @@ const Categories = () => {
               >
                 <option value="default">Best Sellers</option>
                 <option value="new">New Arrivals</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
+                <option value="name-az">Name: A to Z</option>
+                <option value="name-za">Name: Z to A</option>
               </select>
             </div>
           </div>
@@ -202,12 +181,8 @@ const Categories = () => {
                     </span>
                   </div>
                   <div className="p-4">
-                    <p className="text-secondary text-label-md font-label-md mb-1">Model: {product.model}</p>
-                    <h3 className="text-headline-md font-headline-md text-on-background mb-2">{product.name}</h3>
-                    <div className="flex justify-between items-center mt-4">
-                      <span className="text-headline-md font-headline-md text-primary">{formatPrice(product.price)}</span>
-                      <button className="text-primary hover:text-primary-container"><span className="material-symbols-outlined">shopping_cart</span></button>
-                    </div>
+                    <span className="inline-block text-label-md font-label-md text-white bg-primary/80 px-2.5 py-0.5 rounded-full mb-2">{product.category}</span>
+                    <h3 className="text-headline-md font-headline-md text-on-background">{product.name}</h3>
                   </div>
                 </div>
               ))}

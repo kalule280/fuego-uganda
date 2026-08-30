@@ -148,7 +148,7 @@ const About = () => {
               <img alt="Natubwe Shana" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={managerImage} />
             </div>
             <h4 className="text-headline-md font-headline-md text-on-surface">Natubwe Shana</h4>
-            <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Manager Fuego Uganda</p>
+            <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Marketing Manager Fuego Uganda</p>
           </div>
         </div>
       </section>

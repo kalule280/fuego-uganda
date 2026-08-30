@@ -21,10 +21,16 @@ import stove2 from '../images/image/fuegostoves small19.jpg';
 import stove3 from '../images/image/more of small fuego stoves 18.jpg';
 import stove4 from '../images/image/fuego16.jpg';
 
+import metal1 from '../images/metal works.jpg';
+import metal2 from '../images/metal works3.jpg';
+import metal3 from '../images/metal works4.jpg';
+import metal4 from '../images/metal works5.jpg';
+
 const galleries = {
   solar: [solar1, solar2, solar3, solar4, hybrid1, hybrid2, hybrid3, hybrid4, installed1, installed2],
   lights: [light1, light2, installed3],
-  stoves: [stove1, stove2, stove3]
+  stoves: [stove1, stove2, stove3],
+  metalwork: [metal1, metal2, metal3, metal4]
 };
 
 const Gallery = () => {

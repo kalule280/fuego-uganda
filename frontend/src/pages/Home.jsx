@@ -25,6 +25,11 @@ import stove2 from '../images/image/fuegostoves small19.jpg';
 import stove3 from '../images/image/more of small fuego stoves 18.jpg';
 import stove4 from '../images/image/fuego16.jpg';
 
+import metal1 from '../images/metal works.jpg';
+import metal2 from '../images/metal works3.jpg';
+import metal3 from '../images/metal works4.jpg';
+import metal4 from '../images/metal works5.jpg';
+
 const AutoSlider = ({ images, altText }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -86,6 +91,13 @@ const Home = () => {
       description: "Durable, eco-friendly cookstoves engineered to reduce fuel consumption, smoke, and household cooking costs.",
       images: [stove1, stove2, stove3],
       alt: "Cookstoves"
+    },
+    {
+      id: "metalwork",
+      title: "Metal Work",
+      description: "Custom metal fabrication and welding services delivering durable, precision-crafted products for homes, businesses, and industrial applications.",
+      images: [metal1, metal2, metal3, metal4],
+      alt: "Metal Work"
     }
   ];
 
