@@ -6,12 +6,28 @@ const Footer = () => {
   return (
     <footer className="w-full py-section-gap bg-[#0d234a] mt-auto">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
-        <div className="md:col-span-4 flex flex-col gap-4">
+        <div className="md:col-span-3 flex flex-col gap-4">
           <Logo className="h-14 self-start" inverted={true} />
           <p className="text-body-md font-body-md text-[#dfe8ff]/80 max-w-sm mt-2">© 2026 Fuego Uganda Limited. All rights reserved.</p>
         </div>
         
-        <div className="md:col-span-8 flex flex-wrap gap-x-12 gap-y-6 md:justify-end">
+        <div className="md:col-span-9 flex flex-wrap gap-x-12 gap-y-6 md:justify-end">
+          <div className="flex flex-col gap-2">
+            <span className="text-white font-bold text-label-md font-label-md mb-2">Quick Links</span>
+            <Link to="/" className="text-[#dfe8ff]/80 hover:text-white hover:underline transition-all text-body-md font-body-md flex items-center gap-2">
+              <span className="material-symbols-outlined text-sm">home</span> Home
+            </Link>
+            <Link to="/categories" className="text-[#dfe8ff]/80 hover:text-white hover:underline transition-all text-body-md font-body-md flex items-center gap-2">
+              <span className="material-symbols-outlined text-sm">inventory_2</span> Products
+            </Link>
+            <Link to="/about" className="text-[#dfe8ff]/80 hover:text-white hover:underline transition-all text-body-md font-body-md flex items-center gap-2">
+              <span className="material-symbols-outlined text-sm">info</span> About
+            </Link>
+            <Link to="/support" className="text-[#dfe8ff]/80 hover:text-white hover:underline transition-all text-body-md font-body-md flex items-center gap-2">
+              <span className="material-symbols-outlined text-sm">support_agent</span> Contact
+            </Link>
+          </div>
+
           <div className="flex flex-col gap-2">
             <span className="text-white font-bold text-label-md font-label-md mb-2">Locations</span>
             <Link to="#" className="text-[#dfe8ff]/80 hover:text-white hover:underline transition-all text-body-md font-body-md">Kira HQ</Link>
