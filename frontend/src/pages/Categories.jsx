@@ -75,6 +75,7 @@ const Categories = () => {
   const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
   const [showFuelDropdown, setShowFuelDropdown] = useState(false);
   const [showAllCategories, setShowAllCategories] = useState(true);
+  const [showAllProducts, setShowAllProducts] = useState(false);
 
   useEffect(() => {
     if (searchQuery) {
@@ -224,22 +225,36 @@ const Categories = () => {
               <p className="text-body-md font-body-md text-secondary mt-2">Try adjusting your category, fuel type, or price range.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-              {filteredProducts.map(product => (
-                <div key={product.id} className="bg-surface-container-lowest border border-surface-container-high rounded-lg overflow-hidden shadow-[0_4px_24px_rgba(45,52,54,0.08)] hover:shadow-[0_8px_32px_rgba(45,52,54,0.12)] transition-shadow duration-300">
-                  <div className="aspect-[4/3] bg-surface-container relative">
-                    <img alt={product.name} className="w-full h-full object-cover" src={product.image} />
-                    <span className={`absolute top-2 right-2 px-3 py-1 rounded-full text-label-md font-label-md ${product.stock === 'Low Stock' ? 'bg-error text-on-error' : 'bg-tertiary text-on-tertiary'}`}>
-                      {product.stock}
-                    </span>
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+                {(showAllProducts ? filteredProducts : filteredProducts.slice(0, 6)).map(product => (
+                  <div key={product.id} className="bg-surface-container-lowest border border-surface-container-high rounded-lg overflow-hidden shadow-[0_4px_24px_rgba(45,52,54,0.08)] hover:shadow-[0_8px_32px_rgba(45,52,54,0.12)] transition-shadow duration-300">
+                    <div className="aspect-[4/3] bg-surface-container relative">
+                      <img alt={product.name} className="w-full h-full object-cover" src={product.image} />
+                      <span className={`absolute top-2 right-2 px-3 py-1 rounded-full text-label-md font-label-md ${product.stock === 'Low Stock' ? 'bg-error text-on-error' : 'bg-tertiary text-on-tertiary'}`}>
+                        {product.stock}
+                      </span>
+                    </div>
+                    <div className="p-4">
+                      <span className="inline-block text-label-md font-label-md text-white bg-primary/80 px-2.5 py-0.5 rounded-full mb-2">{product.category}</span>
+                      <h3 className="text-headline-md font-headline-md text-on-background">{product.name}</h3>
+                    </div>
                   </div>
-                  <div className="p-4">
-                    <span className="inline-block text-label-md font-label-md text-white bg-primary/80 px-2.5 py-0.5 rounded-full mb-2">{product.category}</span>
-                    <h3 className="text-headline-md font-headline-md text-on-background">{product.name}</h3>
-                  </div>
+                ))}
+              </div>
+              
+              {filteredProducts.length > 6 && (
+                <div className="flex justify-center mt-12">
+                  <button 
+                    onClick={() => setShowAllProducts(!showAllProducts)}
+                    className="bg-[#f97316] text-white px-8 py-3 rounded-full text-sm font-semibold shadow-md hover:bg-[#e86610] transition-colors flex items-center gap-2"
+                  >
+                    {showAllProducts ? 'View Less Products' : 'View All Products'}
+                    <span className="material-symbols-outlined text-[18px]">{showAllProducts ? 'expand_less' : 'expand_more'}</span>
+                  </button>
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           )}
         </section>
       </main>
