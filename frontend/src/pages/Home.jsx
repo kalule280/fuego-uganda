@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import dashboardImage from '../images/fuegostoves dashboard.jpeg';
 import miniStoveImage from '../images/ministove.jpg';
 import doubleStoveImage from '../images/double stove (2).jpg';
@@ -56,6 +56,18 @@ const AutoSlider = ({ images, altText }) => {
 };
 
 const Home = () => {
+  const navigate = useNavigate();
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      navigate(`/categories?search=${encodeURIComponent(searchTerm.trim())}`);
+    } else {
+      navigate('/categories');
+    }
+  };
+
   const [user, setUser] = useState(() => {
     const stored = localStorage.getItem('user');
     return stored ? JSON.parse(stored) : null;
@@ -108,6 +120,20 @@ const Home = () => {
         <div className="absolute inset-0">
           <img src={dashboardImage} alt="Fuego stove dashboard" className="h-full w-full object-cover object-center opacity-100 brightness-[1]" />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,27,70,0.42)_0%,rgba(7,27,70,0.32)_28%,rgba(7,27,70,0.18)_48%,rgba(7,27,70,0.08)_100%)]"></div>
+        </div>
+
+        {/* Transparent Search Bar */}
+        <div className="relative z-20 w-full pt-8 px-4 flex justify-center">
+          <form onSubmit={handleSearch} className="w-full max-w-2xl relative">
+            <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/70">search</span>
+            <input 
+              type="text" 
+              placeholder="Search for stoves, solar, lights..." 
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full bg-white/10 backdrop-blur-md text-white placeholder-white/70 border border-white/20 rounded-full pl-12 pr-6 py-3 md:py-4 focus:outline-none focus:ring-2 focus:ring-[#f97316] transition-all shadow-lg" 
+            />
+          </form>
         </div>
 
         <div className="relative z-10 mx-auto max-w-7xl px-4 py-6 md:px-8 lg:px-10">

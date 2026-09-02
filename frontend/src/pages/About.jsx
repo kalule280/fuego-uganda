@@ -145,9 +145,9 @@ const About = () => {
           {/* Team Member 2 */}
           <div className="group cursor-pointer text-center">
             <div className="aspect-[4/5] rounded-xl overflow-hidden mb-4 bg-surface-variant relative max-w-sm mx-auto">
-              <img alt="Natubwe Shana" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={managerImage} />
+              <img alt="Nantubwe Shana" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={managerImage} />
             </div>
-            <h4 className="text-headline-md font-headline-md text-on-surface">Natubwe Shana</h4>
+            <h4 className="text-headline-md font-headline-md text-on-surface">Nantubwe Shana</h4>
             <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Marketing Manager Fuego Uganda</p>
           </div>
         </div>

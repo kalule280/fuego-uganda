@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import solarAidedImage from '../images/solar aided.jpg';
 import ekyotoImage from '../images/ekyoto efficiency.jpeg';
 import doubleStoveImage from '../images/double stove (2).jpg';
@@ -56,23 +57,30 @@ const allProducts = [
   { id: 17, name: "Solar Lights (Sales)", category: "Solar lighting", fuelType: "Solar", price: 150000, model: "F-LGT-700", image: weSellLightsImage, stock: "In Stock" },
   { id: 18, name: "Solar Light Installation", category: "Solar lighting", fuelType: "Solar", price: 250000, model: "F-LGT-701", image: weInstallLightsImage, stock: "In Stock" },
 
-  // More from Fuego
-  { id: 19, name: "Fuego Multi-Purpose Stove", category: "Charcoal stoves", fuelType: "Charcoal", price: 500000, model: "F-MPS-800", image: moreFuegoImage, stock: "In Stock" },
+
 ];
 
 const categoryList = ["Solar aided stoves", "Ekyoto (Charcoal)", "Firewood stoves", "Charcoal stoves", "Mini stoves", "Double stoves", "Grills", "Solar lighting"];
 const fuelTypeList = ["Wood", "Charcoal", "Briquettes", "Solar"];
 
 const Categories = () => {
-  // Pre-select these categories by default so their products show first
-  const [selectedCategories, setSelectedCategories] = useState([
-    "Solar aided stoves", 
-    "Ekyoto (Charcoal)", 
-    "Firewood stoves", 
-    "Double stoves"
-  ]);
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get('search') || '';
+
+  // Pre-select no categories by default so ALL products show first
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  
   const [selectedFuelTypes, setSelectedFuelTypes] = useState([]);
   const [sortBy, setSortBy] = useState('default');
+  const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
+  const [showFuelDropdown, setShowFuelDropdown] = useState(false);
+  const [showAllCategories, setShowAllCategories] = useState(true);
+
+  useEffect(() => {
+    if (searchQuery) {
+      setSelectedCategories([]);
+    }
+  }, [searchQuery]);
 
   // Toggle a value in/out of an array
   const toggleFilter = (value, selected, setSelected) => {
@@ -88,7 +96,10 @@ const Categories = () => {
   let filteredProducts = allProducts.filter(product => {
     const matchesCategory = selectedCategories.length === 0 || selectedCategories.includes(product.category);
     const matchesFuel = selectedFuelTypes.length === 0 || selectedFuelTypes.includes(product.fuelType);
-    return matchesCategory && matchesFuel;
+    const matchesSearch = !searchQuery || 
+                          product.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          product.category.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesFuel && matchesSearch;
   });
 
   // Apply sorting
@@ -100,67 +111,109 @@ const Categories = () => {
 
   return (
     <>
-      <main className="flex-grow w-full max-w-7xl mx-auto px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-12 gap-gutter">
-        {/* Sidebar Filter */}
-        <aside className="md:col-span-3 space-y-8">
-          <div>
-            <h3 className="text-headline-md font-headline-md mb-4 text-on-background">Categories</h3>
-            <ul className="space-y-2">
-              {categoryList.map(cat => (
-                <li key={cat}>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      className="text-primary focus:ring-primary rounded border-secondary/20"
-                      type="checkbox"
-                      checked={selectedCategories.includes(cat)}
-                      onChange={() => toggleFilter(cat, selectedCategories, setSelectedCategories)}
-                    />
-                    <span className="text-body-md font-body-md">{cat}</span>
-                  </label>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-headline-md font-headline-md mb-4 text-on-background">Fuel Type</h3>
-            <ul className="space-y-2">
-              {fuelTypeList.map(fuel => (
-                <li key={fuel}>
-                  <label className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      className="text-primary focus:ring-primary rounded border-secondary/20"
-                      type="checkbox"
-                      checked={selectedFuelTypes.includes(fuel)}
-                      onChange={() => toggleFilter(fuel, selectedFuelTypes, setSelectedFuelTypes)}
-                    />
-                    <span className="text-body-md font-body-md">{fuel}</span>
-                  </label>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <main className="flex-grow w-full max-w-7xl mx-auto px-margin-desktop py-section-gap">
+        {/* Product Section */}
+        <section className="w-full">
+          <div className="flex flex-col gap-6 mb-8 border-b border-surface-container-high pb-6">
+            <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4">
+              <h1 className="text-display-lg font-display-lg text-on-background">
+                Our Products
+                <span className="text-secondary text-body-md font-body-md ml-3">({filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''})</span>
+              </h1>
+              <div className="flex items-center gap-4 text-body-md font-body-md">
+                <span className="text-secondary hidden sm:inline">Sort by:</span>
+                <select
+                  className="border border-secondary/20 rounded bg-surface focus:border-secondary focus:ring-0 text-on-surface p-2 outline-none"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                >
+                  <option value="default">Best Sellers</option>
+                  <option value="new">New Arrivals</option>
+                  <option value="name-az">Name: A to Z</option>
+                  <option value="name-za">Name: Z to A</option>
+                </select>
+              </div>
+            </div>
 
-        </aside>
-
-        {/* Product Grid */}
-        <section className="md:col-span-9">
-          <div className="flex justify-between items-center mb-8 border-b border-surface-container-high pb-4">
-            <h1 className="text-display-lg font-display-lg text-on-background">
-              Industrial Stoves
-              <span className="text-secondary text-body-md font-body-md ml-3">({filteredProducts.length} product{filteredProducts.length !== 1 ? 's' : ''})</span>
-            </h1>
-            <div className="flex items-center gap-4 text-body-md font-body-md">
-              <span className="text-secondary">Sort by:</span>
-              <select
-                className="border border-secondary/20 rounded bg-surface focus:border-secondary focus:ring-0 text-on-surface p-2"
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
+            {/* Categories Chips */}
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              <button 
+                onClick={() => setSelectedCategories([])}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategories.length === 0 ? 'bg-[#f97316] text-white shadow-md' : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50'}`}
               >
-                <option value="default">Best Sellers</option>
-                <option value="new">New Arrivals</option>
-                <option value="name-az">Name: A to Z</option>
-                <option value="name-za">Name: Z to A</option>
-              </select>
+                All Products
+              </button>
+              
+              {(showAllCategories ? categoryList : categoryList.slice(0, 4)).map(cat => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategories([cat])}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedCategories.includes(cat) && selectedCategories.length === 1 ? 'bg-[#fff0e6] text-[#f97316] border border-[#f97316]/30 shadow-sm' : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50'}`}
+                >
+                  {cat}
+                </button>
+              ))}
+              
+              {categoryList.length > 4 && (
+                <button 
+                  onClick={() => setShowAllCategories(!showAllCategories)}
+                  className="px-3 py-2 rounded-full text-sm font-medium text-gray-500 hover:text-[#f97316] flex items-center gap-1 transition-colors"
+                >
+                  {showAllCategories ? 'View Less' : 'View All'} 
+                  <span className="material-symbols-outlined text-[16px]">{showAllCategories ? 'expand_less' : 'expand_more'}</span>
+                </button>
+              )}
+            </div>
+
+            {/* Horizontal Filters (Other) */}
+            <div className="flex flex-wrap items-center gap-4 relative z-10 border-t border-surface-variant pt-4 mt-2">
+              <div className="relative">
+                <button 
+                  onClick={() => { setShowFuelDropdown(!showFuelDropdown); setShowCategoryDropdown(false); }}
+                  className="flex items-center gap-2 border border-secondary/30 rounded-full bg-surface px-5 py-2 hover:bg-surface-variant transition-colors text-body-md font-medium text-on-surface"
+                >
+                  Fuel Type <span className="material-symbols-outlined text-sm">{showFuelDropdown ? 'expand_less' : 'expand_more'}</span>
+                </button>
+                {showFuelDropdown && (
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-surface rounded-xl shadow-lg border border-surface-variant p-4 z-20">
+                    <ul className="space-y-3">
+                      {fuelTypeList.map(fuel => (
+                        <li key={fuel}>
+                          <label className="flex items-center gap-3 cursor-pointer">
+                            <input
+                              className="text-primary focus:ring-primary rounded border-secondary/30 w-4 h-4"
+                              type="checkbox"
+                              checked={selectedFuelTypes.includes(fuel)}
+                              onChange={() => toggleFilter(fuel, selectedFuelTypes, setSelectedFuelTypes)}
+                            />
+                            <span className="text-body-md font-body-md text-on-surface">{fuel}</span>
+                          </label>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+              {/* Active Filter Pills (Fuel only now) */}
+              {selectedFuelTypes.length > 0 && (
+                <div className="hidden md:flex flex-wrap items-center gap-2 ml-2 pl-4 border-l border-surface-variant">
+                  {selectedFuelTypes.map(fuel => (
+                    <span key={fuel} className="flex items-center gap-1 bg-secondary/10 text-secondary text-sm px-3 py-1 rounded-full">
+                      {fuel}
+                      <button onClick={() => toggleFilter(fuel, selectedFuelTypes, setSelectedFuelTypes)} className="hover:text-secondary-container flex items-center justify-center">
+                        <span className="material-symbols-outlined text-[14px]">close</span>
+                      </button>
+                    </span>
+                  ))}
+                  <button 
+                    onClick={() => setSelectedFuelTypes([])}
+                    className="text-sm text-secondary hover:text-primary ml-2 font-medium"
+                  >
+                    Clear Fuel Filters
+                  </button>
+                </div>
+              )}
             </div>
           </div>
           
