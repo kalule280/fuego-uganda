@@ -18,12 +18,27 @@ import installed2 from '../images/image/our installed house.jpg';
 
 import light1 from '../images/image/fuego lights.jpg';
 import light2 from '../images/image/fuegolight2.jpg';
+
+// Solar Lighting Partners
+import partnerLight from '../images/images/Our partner Solar Light.jpg';
+import moreProductsLight from '../images/images/more products from solar light.jpg';
+import tsi300Light from '../images/images/TSI-300.jpg';
+import aylA3aLight from '../images/images/AYL-A3A.jpg';
+import tgd83lLight from '../images/images/TGD83L.jpg';
+import aylA3aLight2 from '../images/images/the lights.jpg';
+import aasP300Light from '../images/images/AAS-P300,P8A,A600BAandA600B.jpg';
+import floodLight from '../images/images/Solar Flood Light.jpg';
+import streetLight from '../images/images/Solar street Light.jpg';
+import moreSolarPro from '../images/images/more Solar light pro.jpg';
+import solarLightProduct3 from '../images/images/solar light product3.jpg';
 import installed3 from '../images/image/our team installing the solar lights.jpg';
 
 import stove1 from '../images/image/fuego stoves ekyoto.jpg';
 import stove2 from '../images/image/fuegostoves small19.jpg';
 import stove3 from '../images/image/more of small fuego stoves 18.jpg';
 import stove4 from '../images/image/fuego16.jpg';
+import stove5 from '../images/images/ekyoto12.jpg';
+import stove6 from '../images/images/Ekyoto13.jpg';
 
 import metal1 from '../images/metal works.jpg';
 import metal2 from '../images/metal works3.jpg';
@@ -87,7 +102,7 @@ const Home = () => {
       id: "solar",
       title: "Solar & Hybrid Systems",
       description: "Reliable solar panels and hybrid setups tailored for home and business energy independence, complete with expert installation.",
-      images: [solar1, solar2, solar3, solar4, hybrid1, hybrid2, hybrid3, hybrid4, installed1, installed2],
+      images: [solar1, solar2, solar3, solar4, hybrid1, hybrid2, hybrid3, hybrid4, installed1, installed2, stove4],
       alt: "Solar and Hybrid Systems"
     },
     {
@@ -101,7 +116,7 @@ const Home = () => {
       id: "stoves",
       title: "Clean Cookstoves",
       description: "Durable, eco-friendly cookstoves engineered to reduce fuel consumption, smoke, and household cooking costs.",
-      images: [stove1, stove2, stove3],
+      images: [stove5, stove6],
       alt: "Cookstoves"
     },
     {
@@ -141,7 +156,8 @@ const Home = () => {
             <div className="max-w-xl pb-8 pt-8 md:pt-10">
               <span className="inline-flex items-center rounded-full bg-[#f97316] px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_0_18px_rgba(249,115,22,0.38)]">Clean energy innovation</span>
               <h1 className="mt-6 text-[clamp(2.8rem,4.8vw,5rem)] font-black leading-[0.9] tracking-[-0.065em] text-white">Powering Sustainable Kitchens Across Uganda.</h1>
-              <p className="mt-6 max-w-[33rem] text-lg leading-relaxed text-white/80 md:text-xl">Our advanced charcoal stoves, eco-briquettes, and thermal stone systems maximize heat output while solar integration cuts energy costs—significantly lowering fuel expenses for households and enterprise clients across Uganda.</p>
+              <p className="mt-6 max-w-[33rem] text-lg leading-relaxed text-white/80 md:text-xl">Your charcoal is money—don't waste it. Stop wasting money on traditional stoves. Switch to the Fuego 3-Burner Charcoal Cooker and experience the smartest way to cook, save, and manage your kitchen expenses.</p>
+              <p className="mt-4 max-w-[33rem] text-lg leading-relaxed text-white/80 md:text-xl">Our advanced charcoal stoves, eco-briquettes, and thermal stone systems maximize heat output while solar integration cuts energy costs—significantly lowering fuel expenses for households and enterprise clients across Uganda.</p>
 
               <div className="mt-6 h-2.5 w-full max-w-md overflow-hidden rounded-full bg-white/15">
                 <div className="h-full w-[65%] rounded-full bg-[#f97316]"></div>
@@ -312,6 +328,59 @@ const Home = () => {
                 <button className="w-full border border-[#d0d9e4] bg-white text-[#2d3748] hover:border-[#8aa6c3] hover:text-[#1d3550] text-[0.82rem] font-medium uppercase tracking-[0.08em] py-3 rounded-lg transition-colors">Request Quote</button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Solar Lighting Solutions (Partners) */}
+      <section className="w-full bg-[#f8fafc] py-16 border-t border-[#e2e8f0]">
+        <div className="px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
+            <div className="max-w-3xl">
+              <h2 className="text-[clamp(2.1rem,3vw,3rem)] font-semibold tracking-[-0.04em] text-[#0f172a] mb-2">Solar Lighting Solutions.</h2>
+              <p className="text-[1.05rem] text-[#64748b] leading-relaxed">In partnership with industry leaders, we offer a diverse range of solar flood lights, street lamps, and portable systems tailored for various application scenarios.</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { model: 'Our Partner Solar Light', category: 'Solar Flood Light', scenarios: 'Roads, buildings, gardens, factories', image: partnerLight },
+              { model: 'More of our products Solar Light', category: 'Solar Lighting System', scenarios: 'Outdoor electricity, emergencies, mobile charging', image: moreProductsLight },
+              { model: 'TSI-300', category: 'Solar Flood Light', scenarios: 'Roads, buildings, gardens, factories', image: tsi300Light },
+              { model: 'AYL-A3A', category: 'Solar Pillar Lamp', scenarios: 'Above walls, balcony or terrace fences', image: [aylA3aLight, aylA3aLight2, floodLight, streetLight] },
+              { model: 'TGD83L', category: 'Solar Flood Light', scenarios: 'Roads, buildings, gardens, factories', image: tgd83lLight },
+              { model: 'AAS-P300', category: 'Solar Street Lamp (Radar)', scenarios: 'Urban roads, parks, factories, schools', image: aasP300Light },
+              { model: 'More of Solar Light Products', category: 'Solar Energy System', scenarios: 'Urban roads, parks, factories, schools', image: [moreSolarPro, solarLightProduct3] },
+            ].map((product, idx) => (
+              <div key={idx} className="bg-white rounded-xl border border-[#e2e8f0] overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col h-full group">
+                <Link 
+                  to="/gallery?category=lights" 
+                  state={{ category: product.model, images: product.image }}
+                  className="block relative w-full aspect-[4/3] bg-[#f8fafc] overflow-hidden border-b border-[#e2e8f0]"
+                >
+                  {Array.isArray(product.image) ? (
+                    <AutoSlider images={product.image} altText={product.model} />
+                  ) : (
+                    <img src={product.image} alt={product.model} className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" />
+                  )}
+                </Link>
+                <div className="p-6 flex flex-col flex-grow">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-xl font-bold text-[#1e293b]">{product.model}</h3>
+                    <span className="material-symbols-outlined text-[#cbd5e1]">solar_power</span>
+                  </div>
+                  <div className="mb-4">
+                    <span className="inline-block bg-[#f1f5f9] text-[#475569] text-xs font-semibold px-2.5 py-1 rounded-md uppercase tracking-wider">
+                      {product.category}
+                    </span>
+                  </div>
+                  <div className="mt-auto pt-4 border-t border-[#f1f5f9]">
+                    <p className="text-sm font-medium text-[#64748b] mb-1">Application Scenarios:</p>
+                    <p className="text-[#334155] text-[0.95rem] leading-relaxed">{product.scenarios}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

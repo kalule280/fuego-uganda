@@ -7,6 +7,7 @@ import ceoImage from '../images/Chief Executive Officer.jpg';
 import managerImage from '../images/Manager fuego uganda.jpg';
 import localImpactImage from '../images/local impact.jpg';
 import integrityImage from '../images/integrity.jpg';
+import engineerImage from '../images/images/Engineer Fuego Uganda.jpg';
 
 const About = () => {
   return (
@@ -132,14 +133,14 @@ const About = () => {
           </Link>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-gutter max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-gutter max-w-5xl mx-auto">
           {/* Team Member 1 */}
           <div className="group cursor-pointer text-center">
             <div className="aspect-[4/5] rounded-xl overflow-hidden mb-4 bg-surface-variant relative max-w-sm mx-auto">
               <img alt="Baker Lutabi" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={ceoImage} />
             </div>
             <h4 className="text-headline-md font-headline-md text-on-surface">Baker Lutabi</h4>
-            <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Chief Executive Officer Fuego Uganda</p>
+            <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">MD Fuego uganda</p>
           </div>
           
           {/* Team Member 2 */}
@@ -149,6 +150,15 @@ const About = () => {
             </div>
             <h4 className="text-headline-md font-headline-md text-on-surface">Nantubwe Shana</h4>
             <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Marketing Manager Fuego Uganda</p>
+          </div>
+
+          {/* Team Member 3 */}
+          <div className="group cursor-pointer text-center">
+            <div className="aspect-[4/5] rounded-xl overflow-hidden mb-4 bg-surface-variant relative max-w-sm mx-auto">
+              <img alt="Engineer John" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src={engineerImage} />
+            </div>
+            <h4 className="text-headline-md font-headline-md text-on-surface">Engineer John</h4>
+            <p className="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Engineer Fuego Uganda</p>
           </div>
         </div>
       </section>

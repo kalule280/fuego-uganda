@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 
 import solar1 from '../images/image/fuego solar.jpg';
 import solar2 from '../images/image/fuego solar2.jpg';
@@ -20,6 +20,8 @@ import stove1 from '../images/image/fuego stoves ekyoto.jpg';
 import stove2 from '../images/image/fuegostoves small19.jpg';
 import stove3 from '../images/image/more of small fuego stoves 18.jpg';
 import stove4 from '../images/image/fuego16.jpg';
+import stove5 from '../images/images/ekyoto12.jpg';
+import stove6 from '../images/images/Ekyoto13.jpg';
 
 import metal1 from '../images/metal works.jpg';
 import metal2 from '../images/metal works3.jpg';
@@ -27,17 +29,26 @@ import metal3 from '../images/metal works4.jpg';
 import metal4 from '../images/metal works5.jpg';
 
 const galleries = {
-  solar: [solar1, solar2, solar3, solar4, hybrid1, hybrid2, hybrid3, hybrid4, installed1, installed2],
+  solar: [solar1, solar2, solar3, solar4, hybrid1, hybrid2, hybrid3, hybrid4, installed1, installed2, stove4],
   lights: [light1, light2, installed3],
-  stoves: [stove1, stove2, stove3],
+  stoves: [stove5, stove6],
   metalwork: [metal1, metal2, metal3, metal4]
 };
 
 const Gallery = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const category = searchParams.get('category') || 'solar';
-  const images = galleries[category] || galleries.solar;
+  const location = useLocation();
+  
+  const stateCategory = location.state?.category;
+  const stateImages = location.state?.images;
+  
+  const category = stateCategory || searchParams.get('category') || 'solar';
+  
+  // If images are passed in state (ensure it's an array), use them. Otherwise fallback to predefined galleries.
+  const images = stateImages 
+    ? (Array.isArray(stateImages) ? stateImages : [stateImages])
+    : (galleries[category] || galleries.solar);
 
   useEffect(() => {
     window.scrollTo(0, 0);
