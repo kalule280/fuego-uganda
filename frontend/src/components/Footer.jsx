@@ -79,6 +79,12 @@ const Footer = () => {
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
             </a>
+
+            <a href="https://www.tiktok.com/@fuegouganda0707635706" target="_blank" rel="noopener noreferrer" aria-label="TikTok - Fuego Uganda Limited" onClick={(e) => { e.stopPropagation(); }} className="flex h-14 w-14 sm:h-12 sm:w-12 items-center justify-center rounded-lg bg-white text-[#1d1d1d] shadow-md transition-transform duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+              <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current pointer-events-none" aria-hidden="true">
+                <path d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6 0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64 0 3.33 2.76 5.7 5.69 5.7 3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z" />
+              </svg>
+            </a>
           </div>
         </div>
       </div>
