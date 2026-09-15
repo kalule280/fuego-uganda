@@ -45,6 +45,11 @@ import metal2 from '../images/metal works3.jpg';
 import metal3 from '../images/metal works4.jpg';
 import metal4 from '../images/metal works5.jpg';
 
+import video1 from '../fuego-demo.mp4/more of Fuego23.mp4';
+import video2 from '../fuego-demo.mp4/more of fuego25.mp4';
+import video3 from '../fuego-demo.mp4/more of Fugo24.mp4';
+import video4 from '../images/images/charcoal2.mp4';
+
 const AutoSlider = ({ images, altText }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -58,14 +63,27 @@ const AutoSlider = ({ images, altText }) => {
 
   return (
     <div className="relative w-full h-full bg-gray-200">
-      {images.map((imgSrc, idx) => (
-        <img 
-          key={idx}
-          src={imgSrc}
-          alt={`${altText} ${idx + 1}`}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'} hover:scale-105`}
-        />
-      ))}
+      {images.map((mediaSrc, idx) => {
+        const isVideo = typeof mediaSrc === 'string' && mediaSrc.endsWith('.mp4');
+        return isVideo ? (
+          <video
+            key={idx}
+            src={mediaSrc}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'} hover:scale-105`}
+          />
+        ) : (
+          <img 
+            key={idx}
+            src={mediaSrc}
+            alt={`${altText} ${idx + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'} hover:scale-105`}
+          />
+        );
+      })}
     </div>
   );
 };
@@ -125,6 +143,13 @@ const Home = () => {
       description: "Custom metal fabrication and welding services delivering durable, precision-crafted products for homes, businesses, and industrial applications.",
       images: [metal1, metal2, metal3, metal4],
       alt: "Metal Work"
+    },
+    {
+      id: "videos",
+      title: "Product Demos",
+      description: "Watch our cookstoves and solar systems in action with real-world product demonstrations.",
+      images: [video1, video2, video3, video4],
+      alt: "Product Demonstrations"
     }
   ];
 
@@ -156,7 +181,7 @@ const Home = () => {
             <div className="max-w-xl pb-8 pt-8 md:pt-10">
               <span className="inline-flex items-center rounded-full bg-[#f97316] px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_0_18px_rgba(249,115,22,0.38)]">Clean energy innovation</span>
               <h1 className="mt-6 text-[clamp(2.8rem,4.8vw,5rem)] font-black leading-[0.9] tracking-[-0.065em] text-white">Powering Sustainable Kitchens Across Uganda.</h1>
-              <p className="mt-6 max-w-[33rem] text-lg leading-relaxed text-white/80 md:text-xl">Your charcoal is money—don't waste it. Stop wasting money on traditional stoves. Switch to the Fuego 3-Burner Charcoal Cooker and experience the smartest way to cook, save, and manage your kitchen expenses.</p>
+              <p className="mt-6 max-w-[33rem] text-lg leading-relaxed text-white/80 md:text-xl">Switch to the Fuego 3-Burner Charcoal Cooker and experience the smartest way to cook, save, and manage your kitchen expenses.</p>
               <p className="mt-4 max-w-[33rem] text-lg leading-relaxed text-white/80 md:text-xl">Our advanced charcoal stoves, eco-briquettes, and thermal stone systems maximize heat output while solar integration cuts energy costs—significantly lowering fuel expenses for households and enterprise clients across Uganda.</p>
 
               <div className="mt-6 h-2.5 w-full max-w-md overflow-hidden rounded-full bg-white/15">

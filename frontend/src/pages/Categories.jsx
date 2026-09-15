@@ -51,7 +51,6 @@ const allProducts = [
 
   // Grills
   { id: 4, name: "Double Grill", category: "Grills", fuelType: "Charcoal", price: 350000, model: "F-GRL-600", image: doubleGrillImage, stock: "In Stock" },
-  { id: 5, name: "Commercial Double Grill", category: "Grills", fuelType: "Charcoal", price: 600000, model: "F-COM-601", image: commercialDoubleGrillImage, stock: "In Stock" },
 
   // Solar Lighting
   { id: 17, name: "Solar Lights (Sales)", category: "Solar lighting", fuelType: "Solar", price: 150000, model: "F-LGT-700", image: weSellLightsImage, stock: "In Stock" },

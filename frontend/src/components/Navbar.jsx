@@ -58,9 +58,10 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden items-center gap-7 lg:flex">
+        <div className="flex items-center gap-3 md:gap-7 overflow-x-auto whitespace-nowrap pb-1 md:pb-0">
           <NavLink to="/" className={getNavClass} end>Home</NavLink>
           <NavLink to="/categories" className={getNavClass}>Products</NavLink>
+          <NavLink to="/gallery?category=videos" className={getNavClass}>Videos</NavLink>
           <NavLink to="/about" className={getNavClass}>About</NavLink>
           <NavLink to="/support" className={getNavClass}>Contact</NavLink>
         </div>
@@ -69,7 +70,7 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           {user ? (
             <>
-              <span className="text-white text-sm font-semibold hidden md:inline-block">Welcome, {user.username}!</span>
+              <span className="text-white text-sm font-semibold">Welcome, {user.username}!</span>
               <button onClick={handleSignout} className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10">
                 Sign out
               </button>
@@ -85,27 +86,8 @@ const Navbar = () => {
             </>
           )}
 
-          <button
-            type="button"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-            className="relative z-50 p-2 text-white lg:hidden"
-          >
-            <span className="material-symbols-outlined">menu</span>
-          </button>
         </div>
       </div>
-      {menuOpen && (
-        <div className="border-t border-white/10 bg-[#071b46] px-margin-mobile pb-5 pt-3 lg:hidden">
-          <div className="flex flex-col gap-1">
-            <NavLink to="/" end onClick={() => setMenuOpen(false)} className={getNavClass}>Home</NavLink>
-            <NavLink to="/categories" onClick={() => setMenuOpen(false)} className={getNavClass}>Products</NavLink>
-            <NavLink to="/about" onClick={() => setMenuOpen(false)} className={getNavClass}>About</NavLink>
-            <NavLink to="/support" onClick={() => setMenuOpen(false)} className={getNavClass}>Contact</NavLink>
-          </div>
-        </div>
-      )}
       <SignupModal isOpen={isSignupOpen} onClose={() => setIsSignupOpen(false)} onLogin={handleLogin} />
       <SigninModal isOpen={isSigninOpen} onClose={() => setIsSigninOpen(false)} onLogin={handleLogin} />
     </header>

@@ -28,11 +28,17 @@ import metal2 from '../images/metal works3.jpg';
 import metal3 from '../images/metal works4.jpg';
 import metal4 from '../images/metal works5.jpg';
 
+import video1 from '../fuego-demo.mp4/more of Fuego23.mp4';
+import video2 from '../fuego-demo.mp4/more of fuego25.mp4';
+import video3 from '../fuego-demo.mp4/more of Fugo24.mp4';
+import video4 from '../images/images/charcoal2.mp4';
+
 const galleries = {
   solar: [solar1, solar2, solar3, solar4, hybrid1, hybrid2, hybrid3, hybrid4, installed1, installed2, stove4],
   lights: [light1, light2, installed3],
   stoves: [stove5, stove6],
-  metalwork: [metal1, metal2, metal3, metal4]
+  metalwork: [metal1, metal2, metal3, metal4],
+  videos: [video1, video2, video3, video4]
 };
 
 const Gallery = () => {
@@ -79,15 +85,30 @@ const Gallery = () => {
 
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {images.map((imgSrc, idx) => (
-            <div key={idx} className="aspect-square rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-all border border-gray-100">
-              <img 
-                src={imgSrc} 
-                alt={`Gallery image ${idx + 1}`} 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          ))}
+          {images.map((mediaSrc, idx) => {
+            const isVideo = typeof mediaSrc === 'string' && mediaSrc.endsWith('.mp4');
+            return (
+              <div key={idx} className="aspect-square rounded-xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-all border border-gray-100">
+                {isVideo ? (
+                  <video 
+                    src={mediaSrc} 
+                    controls
+                    muted
+                    autoPlay
+                    loop
+                    playsInline
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <img 
+                    src={mediaSrc} 
+                    alt={`Gallery image ${idx + 1}`} 
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                )}
+              </div>
+            );
+          })}
         </div>
         
       </div>
