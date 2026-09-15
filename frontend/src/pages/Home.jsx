@@ -347,10 +347,10 @@ const Home = () => {
                 <div className="absolute top-4 left-4 z-10 flex gap-2">
                   <span className="bg-[#dff3f5] text-[#1d7f8c] text-[9px] font-semibold px-2 py-1 rounded-full uppercase tracking-[0.12em]">Eco-Friendly</span>
                 </div>
-                <img alt="Solar aid" className="w-full h-full object-cover object-center drop-shadow-[0_14px_20px_rgba(15,23,42,0.12)] group-hover:scale-[1.03] transition-transform duration-500" src={solarAidedImage} />
+                <img alt="Solar Aided Stove" className="w-full h-full object-cover object-center drop-shadow-[0_14px_20px_rgba(15,23,42,0.12)] group-hover:scale-[1.03] transition-transform duration-500" src={solarAidedImage} />
               </div>
               <div className="p-5 flex flex-col flex-grow">
-                <h3 className="text-[1.7rem] font-semibold tracking-[-0.04em] text-[#2d3748] mb-2">Solar aid</h3>
+                <h3 className="text-[1.7rem] font-semibold tracking-[-0.04em] text-[#2d3748] mb-2">Solar Aided Stove</h3>
                 <p className="text-[0.95rem] text-[#667085] mb-5 flex-grow leading-relaxed">Stove with solar for easy cooking and its fast during the process</p>
                 <div className="text-[1.1rem] font-semibold text-[#2d3748] mb-4">UGX 600,000</div>
                 <button className="w-full border border-[#d0d9e4] bg-white text-[#2d3748] hover:border-[#8aa6c3] hover:text-[#1d3550] text-[0.82rem] font-medium uppercase tracking-[0.08em] py-3 rounded-lg transition-colors">Request Quote</button>
