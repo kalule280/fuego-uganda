@@ -42,10 +42,10 @@ const Navbar = () => {
 
   const getNavClass = ({ isActive }) => {
     return [
-      'group relative px-3 py-2 text-sm font-medium tracking-[0.02em] transition-all duration-200',
+      'group relative px-1.5 md:px-3 py-2 text-xs md:text-sm font-medium tracking-[0.02em] transition-all duration-200',
       isActive
-        ? 'text-white after:absolute after:left-3 after:right-3 after:-bottom-1 after:h-[2px] after:rounded-full after:bg-[#f97316] after:content-[""]'
-        : 'text-white/70 hover:text-white after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:rounded-full after:bg-[#f97316] after:transition-all after:duration-300 after:content-[""] group-hover:after:left-3 group-hover:after:right-3 group-hover:after:w-auto'
+        ? 'text-white after:absolute after:left-1.5 md:after:left-3 after:right-1.5 md:after:right-3 after:-bottom-1 after:h-[2px] after:rounded-full after:bg-[#f97316] after:content-[""]'
+        : 'text-white/70 hover:text-white after:absolute after:left-1/2 after:-bottom-1 after:h-[2px] after:w-0 after:rounded-full after:bg-[#f97316] after:transition-all after:duration-300 after:content-[""] group-hover:after:left-1.5 md:group-hover:after:left-3 group-hover:after:right-1.5 md:group-hover:after:right-3 group-hover:after:w-auto'
     ].join(' ');
   };
 
@@ -57,8 +57,8 @@ const Navbar = () => {
           <Logo className="h-14" inverted={true} />
         </Link>
 
-        {/* Desktop Navigation Links */}
-        <div className="flex items-center gap-3 md:gap-7 overflow-x-auto whitespace-nowrap pb-1 md:pb-0">
+        {/* Navigation Links */}
+        <div className="flex items-center space-x-2 md:space-x-6">
           <NavLink to="/" className={getNavClass} end>Home</NavLink>
           <NavLink to="/categories" className={getNavClass}>Products</NavLink>
           <NavLink to="/gallery?category=videos" className={getNavClass}>Videos</NavLink>
@@ -67,20 +67,20 @@ const Navbar = () => {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-end gap-2 sm:gap-4">
           {user ? (
             <>
-              <span className="text-white text-sm font-semibold">Welcome, {user.username}!</span>
-              <button onClick={handleSignout} className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10">
+              <span className="text-white text-sm font-semibold hidden md:inline-block">Welcome, {user.username}!</span>
+              <button onClick={handleSignout} className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-3 py-1 md:px-4 md:py-2.5 text-xs md:text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10">
                 Sign out
               </button>
             </>
           ) : (
             <>
-              <button onClick={() => setIsSigninOpen(true)} className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10">
+              <button onClick={() => setIsSigninOpen(true)} className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-3 py-1 md:px-4 md:py-2.5 text-xs md:text-sm font-semibold text-white transition-all duration-200 hover:bg-white/10">
                 Sign in
               </button>
-              <button onClick={() => setIsSignupOpen(true)} className="inline-flex items-center justify-center rounded-lg bg-[#ed3c2d] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(237,60,45,0.30)] transition-all duration-200 hover:bg-[#ff5d4d] active:scale-[0.98]">
+              <button onClick={() => setIsSignupOpen(true)} className="inline-flex items-center justify-center rounded-lg bg-[#ed3c2d] px-3 py-1 md:px-4 md:py-2.5 text-xs md:text-sm font-semibold text-white shadow-[0_8px_20px_rgba(237,60,45,0.30)] transition-all duration-200 hover:bg-[#ff5d4d] active:scale-[0.98]">
                 Sign up
               </button>
             </>
