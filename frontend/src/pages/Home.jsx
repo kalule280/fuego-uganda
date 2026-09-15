@@ -68,13 +68,16 @@ const AutoSlider = ({ images, altText }) => {
         return isVideo ? (
           <video
             key={idx}
-            src={mediaSrc}
             autoPlay
             loop
             muted
             playsInline
+            preload="auto"
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'} hover:scale-105`}
-          />
+          >
+            <source src={mediaSrc} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         ) : (
           <img 
             key={idx}
