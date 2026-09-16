@@ -49,6 +49,9 @@ import video1 from '../fuego-demo.mp4/more of Fuego23.mp4';
 import video2 from '../fuego-demo.mp4/more of fuego25.mp4';
 import video3 from '../fuego-demo.mp4/more of Fugo24.mp4';
 import video4 from '../images/images/charcoal2.mp4';
+import solarVideo1 from '../fuego-demo.mp4/solar light89.mp4';
+import solarVideo2 from '../fuego-demo.mp4/solarlight87.mp4';
+import solarVideo3 from '../fuego-demo.mp4/solarlight88.mp4';
 
 const AutoSlider = ({ images, altText }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -148,11 +151,18 @@ const Home = () => {
       alt: "Metal Work"
     },
     {
-      id: "videos",
-      title: "Product Demos",
-      description: "Watch our cookstoves and solar systems in action with real-world product demonstrations.",
+      id: "fuego-videos",
+      title: "Fuego Product Demos",
+      description: "Watch our cookstoves in action with real-world product demonstrations.",
       images: [video1, video2, video3, video4],
-      alt: "Product Demonstrations"
+      alt: "Fuego Product Demonstrations"
+    },
+    {
+      id: "solar-videos",
+      title: "Solar Product Demos",
+      description: "Watch our solar lighting systems in action with real-world demonstrations.",
+      images: [solarVideo1, solarVideo2, solarVideo3],
+      alt: "Solar Product Demonstrations"
     }
   ];
 

@@ -33,12 +33,18 @@ import video2 from '../fuego-demo.mp4/more of fuego25.mp4';
 import video3 from '../fuego-demo.mp4/more of Fugo24.mp4';
 import video4 from '../images/images/charcoal2.mp4';
 
+import solarVideo1 from '../fuego-demo.mp4/solar light89.mp4';
+import solarVideo2 from '../fuego-demo.mp4/solarlight87.mp4';
+import solarVideo3 from '../fuego-demo.mp4/solarlight88.mp4';
+
 const galleries = {
   solar: [solar1, solar2, solar3, solar4, hybrid1, hybrid2, hybrid3, hybrid4, installed1, installed2, stove4],
   lights: [light1, light2, installed3],
   stoves: [stove5, stove6],
   metalwork: [metal1, metal2, metal3, metal4],
-  videos: [video1, video2, video3, video4]
+  videos: [video1, video2, video3, video4, solarVideo1, solarVideo2, solarVideo3],
+  'fuego-videos': [video1, video2, video3, video4],
+  'solar-videos': [solarVideo1, solarVideo2, solarVideo3]
 };
 
 const Gallery = () => {
