@@ -4,6 +4,7 @@ import dashboardImage from '../images/fuegostoves dashboard.jpeg';
 import miniStoveImage from '../images/ministove.jpg';
 import doubleStoveImage from '../images/double stove (2).jpg';
 import solarAidedImage from '../images/solar aided.jpg';
+import ebyotoIme from '../images/image/ebyoto ime.jpg';
 
 import solar1 from '../images/image/fuego solar.jpg';
 import solar2 from '../images/image/fuego solar2.jpg';
@@ -60,7 +61,7 @@ const AutoSlider = ({ images, altText }) => {
     if (!images || images.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 3500);
+    }, 10000);
     return () => clearInterval(timer);
   }, [images]);
 
@@ -171,8 +172,8 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative isolate w-full overflow-hidden bg-[#071b46]">
         <div className="absolute inset-0">
-          <img src={dashboardImage} alt="Fuego stove dashboard" className="h-full w-full object-cover object-center opacity-100 brightness-[1]" />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,27,70,0.42)_0%,rgba(7,27,70,0.32)_28%,rgba(7,27,70,0.18)_48%,rgba(7,27,70,0.08)_100%)]"></div>
+          <AutoSlider images={[dashboardImage, ebyotoIme, doubleStoveImage]} altText="Fuego Uganda Clean Energy" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,27,70,0.42)_0%,rgba(7,27,70,0.32)_28%,rgba(7,27,70,0.18)_48%,rgba(7,27,70,0.08)_100%)] pointer-events-none"></div>
         </div>
 
         {/* Transparent Search Bar */}
