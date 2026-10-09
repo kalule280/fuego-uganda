@@ -89,7 +89,7 @@ const Support = () => {
                     </div>
                     <div className="flex items-center gap-2 text-secondary font-medium">
                       <span className="material-symbols-outlined text-sm">call</span>
-                      <a className="font-body-md text-sm hover:underline" href="tel:+256707635706">0707635706</a>
+                      <a className="font-body-md text-sm hover:underline" href="tel:+256707635706">0707635706 / 0760033623 / 0788837621</a>
                     </div>
                     <div className="flex items-center gap-2 text-secondary font-medium">
                       <span className="material-symbols-outlined text-sm">mail</span>
