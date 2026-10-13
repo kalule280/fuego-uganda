@@ -319,7 +319,7 @@ const Home = () => {
           <div className="flex min-h-[620px] items-center pointer-events-none">
             <div className="max-w-2xl pb-8 pt-8 md:pt-10 pointer-events-auto">
               <h1 className="text-[clamp(2.4rem,4.2vw,4.5rem)] font-black leading-[1.05] tracking-[-0.05em] text-white">Powering Sustainable Kitchens, Solar &amp; Hybrid Systems and Metal Work Across Uganda.</h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">Our advanced charcoal stoves, eco-briquettes, and thermal stone systems maximize heat output while solar integration cuts energy costs—significantly lowering fuel expenses for households and enterprise clients across Uganda. Paired with tailored solar energy installations and precision metal fabrication, we deliver complete, long-lasting power and infrastructure solutions built for Ugandan conditions.</p>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">Save money on fuel and electricity with our high-efficiency stoves, eco-briquettes, and custom solar & hybrid power setups. Combined with strong, handcrafted metal fabrication, we deliver reliable energy and lasting structures for homes, schools, and businesses across Uganda.</p>
 
               <div className="mt-6 h-2.5 w-full max-w-md overflow-hidden rounded-full bg-white/15">
                 <div className="h-full w-[65%] rounded-full bg-[#f97316]"></div>
