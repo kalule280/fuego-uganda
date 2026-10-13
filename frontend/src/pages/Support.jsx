@@ -39,26 +39,26 @@ const Support = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="font-label-md text-label-md text-on-surface block" htmlFor="name">Full Name</label>
-                  <input className="w-full bg-surface border border-outline rounded p-3 font-body-md text-body-md text-on-surface transition-all duration-200 focus:outline-none focus:border-primary-container focus:ring-4 focus:ring-primary-container/10" id="name" placeholder="John Doe" type="text" />
+                  <input className="w-full bg-surface border border-outline rounded p-3 font-body-md text-body-md text-on-surface transition-all duration-200 focus:outline-none focus:border-primary-container focus:ring-4 focus:ring-primary-container/10" id="name" type="text" />
                 </div>
                 <div className="space-y-2">
                   <label className="font-label-md text-label-md text-on-surface block" htmlFor="company">Company / Institution</label>
-                  <input className="w-full bg-surface border border-outline rounded p-3 font-body-md text-body-md text-on-surface transition-all duration-200 focus:outline-none focus:border-primary-container focus:ring-4 focus:ring-primary-container/10" id="company" placeholder="Acme Corp" type="text" />
+                  <input className="w-full bg-surface border border-outline rounded p-3 font-body-md text-body-md text-on-surface transition-all duration-200 focus:outline-none focus:border-primary-container focus:ring-4 focus:ring-primary-container/10" id="company" type="text" />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="font-label-md text-label-md text-on-surface block" htmlFor="email">Work Email</label>
-                  <input className="w-full bg-surface border border-outline rounded p-3 font-body-md text-body-md text-on-surface transition-all duration-200 focus:outline-none focus:border-primary-container focus:ring-4 focus:ring-primary-container/10" id="email" placeholder="john@company.com" type="email" />
+                  <input className="w-full bg-surface border border-outline rounded p-3 font-body-md text-body-md text-on-surface transition-all duration-200 focus:outline-none focus:border-primary-container focus:ring-4 focus:ring-primary-container/10" id="email" type="email" />
                 </div>
                 <div className="space-y-2">
                   <label className="font-label-md text-label-md text-on-surface block" htmlFor="phone">Phone Number</label>
-                  <input className="w-full bg-surface border border-outline rounded p-3 font-body-md text-body-md text-on-surface transition-all duration-200 focus:outline-none focus:border-primary-container focus:ring-4 focus:ring-primary-container/10" id="phone" placeholder="+256 ..." type="tel" />
+                  <input className="w-full bg-surface border border-outline rounded p-3 font-body-md text-body-md text-on-surface transition-all duration-200 focus:outline-none focus:border-primary-container focus:ring-4 focus:ring-primary-container/10" id="phone" type="tel" />
                 </div>
               </div>
               <div className="space-y-2">
                 <label className="font-label-md text-label-md text-on-surface block" htmlFor="requirements">Project Requirements</label>
-                <textarea className="w-full bg-surface border border-outline rounded p-3 font-body-md text-body-md text-on-surface transition-all duration-200 focus:outline-none focus:border-primary-container focus:ring-4 focus:ring-primary-container/10 resize-none" id="requirements" placeholder="Describe your energy needs, estimated capacity, and timeline..." rows="4"></textarea>
+                <textarea className="w-full bg-surface border border-outline rounded p-3 font-body-md text-body-md text-on-surface transition-all duration-200 focus:outline-none focus:border-primary-container focus:ring-4 focus:ring-primary-container/10 resize-none" id="requirements" rows="4"></textarea>
               </div>
               <div className="flex items-start gap-3">
                 <input className="mt-1 rounded text-primary-container focus:ring-primary-container border-outline bg-surface cursor-pointer" id="terms" type="checkbox" />

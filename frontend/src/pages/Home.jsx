@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import dashboardImage from '../images/fuegostoves dashboard.jpeg';
 import miniStoveImage from '../images/ministove.jpg';
 import doubleStoveImage from '../images/double stove (2).jpg';
 import solarAidedImage from '../images/solar aided.jpg';
@@ -54,21 +53,66 @@ import solarVideo1 from '../fuego-demo.mp4/solar light89.mp4';
 import solarVideo2 from '../fuego-demo.mp4/solarlight87.mp4';
 import solarVideo3 from '../fuego-demo.mp4/solarlight88.mp4';
 
-const AutoSlider = ({ images, altText }) => {
+// Sliding images for the main Hero banner
+const heroSliderImages = [
+  ebyotoIme,
+  solar1,
+  installed2,
+  stove3,
+  doubleStoveImage
+];
+
+const AutoSlider = ({ images, altText, interval = 7000, showDots = false, showArrows = false }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(null);
+
+  const handleNext = () => {
+    if (!images || images.length <= 1) return;
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const handlePrev = () => {
+    if (!images || images.length <= 1) return;
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleTouchStart = (e) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    setTouchStartX(null);
+  };
 
   useEffect(() => {
     if (!images || images.length <= 1) return;
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 10000);
+    }, interval);
     return () => clearInterval(timer);
-  }, [images]);
+  }, [currentIndex, images?.length, interval]);
+
+  if (!images || images.length === 0) return null;
 
   return (
-    <div className="relative w-full h-full bg-gray-200">
+    <div 
+      className="relative w-full h-full bg-slate-900 overflow-hidden select-none"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {images.map((mediaSrc, idx) => {
         const isVideo = typeof mediaSrc === 'string' && mediaSrc.endsWith('.mp4');
+        const isActive = idx === currentIndex;
         return isVideo ? (
           <video
             key={idx}
@@ -77,7 +121,9 @@ const AutoSlider = ({ images, altText }) => {
             muted
             playsInline
             preload="auto"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'} hover:scale-105`}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
+              isActive ? 'opacity-100 z-10 scale-100' : 'opacity-0 z-0 scale-105 pointer-events-none'
+            }`}
           >
             <source src={mediaSrc} type="video/mp4" />
             Your browser does not support the video tag.
@@ -87,10 +133,89 @@ const AutoSlider = ({ images, altText }) => {
             key={idx}
             src={mediaSrc}
             alt={`${altText} ${idx + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${idx === currentIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'} hover:scale-105`}
+            className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-in-out ${
+              isActive ? 'opacity-100 z-10 scale-100' : 'opacity-0 z-0 scale-105 pointer-events-none'
+            }`}
           />
         );
       })}
+
+      {/* Side Arrow Navigation Buttons */}
+      {showArrows && images.length > 1 && (
+        <>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePrev();
+            }}
+            aria-label="Previous slide"
+            className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-11 h-11 md:w-13 md:h-13 rounded-full bg-black/40 hover:bg-black/75 text-white backdrop-blur-md border border-white/20 transition-all hover:scale-110 active:scale-95 shadow-[0_4px_20px_rgba(0,0,0,0.4)] group"
+          >
+            <span className="material-symbols-outlined text-2xl md:text-3xl group-hover:-translate-x-0.5 transition-transform">chevron_left</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleNext();
+            }}
+            aria-label="Next slide"
+            className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-30 flex items-center justify-center w-11 h-11 md:w-13 md:h-13 rounded-full bg-black/40 hover:bg-black/75 text-white backdrop-blur-md border border-white/20 transition-all hover:scale-110 active:scale-95 shadow-[0_4px_20px_rgba(0,0,0,0.4)] group"
+          >
+            <span className="material-symbols-outlined text-2xl md:text-3xl group-hover:translate-x-0.5 transition-transform">chevron_right</span>
+          </button>
+        </>
+      )}
+
+      {/* Bottom Navigation Dock with Prev, Indicator Dots, and Next */}
+      {showDots && images.length > 1 && (
+        <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 bg-black/55 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-2xl">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePrev();
+            }}
+            aria-label="Previous image"
+            title="Previous image"
+            className="flex items-center justify-center w-7 h-7 rounded-full bg-white/10 hover:bg-white/25 text-white transition-all active:scale-90"
+          >
+            <span className="material-symbols-outlined text-base">arrow_back</span>
+          </button>
+
+          <div className="flex items-center gap-2">
+            {images.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentIndex(idx);
+                }}
+                aria-label={`Go to slide ${idx + 1}`}
+                className={`h-2 transition-all duration-300 rounded-full ${
+                  idx === currentIndex ? 'w-6 bg-[#f97316]' : 'w-2 bg-white/40 hover:bg-white/80'
+                }`}
+              />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleNext();
+            }}
+            aria-label="Next image"
+            title="Next image"
+            className="flex items-center justify-center w-7 h-7 rounded-full bg-white/10 hover:bg-white/25 text-white transition-all active:scale-90"
+          >
+            <span className="material-symbols-outlined text-base">arrow_forward</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 };
@@ -172,7 +297,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative isolate w-full overflow-hidden bg-[#071b46]">
         <div className="absolute inset-0">
-          <AutoSlider images={[dashboardImage, ebyotoIme, doubleStoveImage]} altText="Fuego Uganda Clean Energy" />
+          <AutoSlider images={heroSliderImages} altText="Fuego Uganda Clean Energy, Solar & Metal Work" showDots showArrows interval={7500} />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,27,70,0.42)_0%,rgba(7,27,70,0.32)_28%,rgba(7,27,70,0.18)_48%,rgba(7,27,70,0.08)_100%)] pointer-events-none"></div>
         </div>
 
@@ -190,13 +315,11 @@ const Home = () => {
           </form>
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-6 md:px-8 lg:px-10">
-          <div className="flex min-h-[620px] items-center">
-            <div className="max-w-xl pb-8 pt-8 md:pt-10">
-              <span className="inline-flex items-center rounded-full bg-[#f97316] px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-white shadow-[0_0_18px_rgba(249,115,22,0.38)]">Clean energy innovation</span>
-              <h1 className="mt-6 text-[clamp(2.8rem,4.8vw,5rem)] font-black leading-[0.9] tracking-[-0.065em] text-white">Powering Sustainable Kitchens Across Uganda.</h1>
-              <p className="mt-6 max-w-[33rem] text-lg leading-relaxed text-white/80 md:text-xl">Switch to the Fuego 3-Burner Charcoal Cooker and experience the smartest way to cook, save, and manage your kitchen expenses.</p>
-              <p className="mt-4 max-w-[33rem] text-lg leading-relaxed text-white/80 md:text-xl">Our advanced charcoal stoves, eco-briquettes, and thermal stone systems maximize heat output while solar integration cuts energy costs—significantly lowering fuel expenses for households and enterprise clients across Uganda.</p>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-6 md:px-8 lg:px-10 pointer-events-none">
+          <div className="flex min-h-[620px] items-center pointer-events-none">
+            <div className="max-w-2xl pb-8 pt-8 md:pt-10 pointer-events-auto">
+              <h1 className="text-[clamp(2.4rem,4.2vw,4.5rem)] font-black leading-[1.05] tracking-[-0.05em] text-white">Powering Sustainable Kitchens, Solar &amp; Hybrid Systems and Metal Work Across Uganda.</h1>
+              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">Our advanced charcoal stoves, eco-briquettes, and thermal stone systems maximize heat output while solar integration cuts energy costs—significantly lowering fuel expenses for households and enterprise clients across Uganda. Paired with tailored solar energy installations and precision metal fabrication, we deliver complete, long-lasting power and infrastructure solutions built for Ugandan conditions.</p>
 
               <div className="mt-6 h-2.5 w-full max-w-md overflow-hidden rounded-full bg-white/15">
                 <div className="h-full w-[65%] rounded-full bg-[#f97316]"></div>
