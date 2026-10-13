@@ -59,7 +59,8 @@ const heroSliderImages = [
   solar1,
   installed2,
   stove3,
-  doubleStoveImage
+  doubleStoveImage,
+  metal3
 ];
 
 const AutoSlider = ({ images, altText, interval = 7000, showDots = false, showArrows = false }) => {
