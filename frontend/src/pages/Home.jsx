@@ -298,7 +298,7 @@ const Home = () => {
       {/* Hero Section */}
       <section className="relative isolate w-full overflow-hidden bg-[#071b46]">
         <div className="absolute inset-0">
-          <AutoSlider images={heroSliderImages} altText="Fuego Uganda Clean Energy, Solar & Metal Work" showDots showArrows interval={7500} />
+          <AutoSlider images={heroSliderImages} altText="Fuego Uganda Clean Energy, Solar & Metal Work" interval={7500} />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,27,70,0.42)_0%,rgba(7,27,70,0.32)_28%,rgba(7,27,70,0.18)_48%,rgba(7,27,70,0.08)_100%)] pointer-events-none"></div>
         </div>
 
